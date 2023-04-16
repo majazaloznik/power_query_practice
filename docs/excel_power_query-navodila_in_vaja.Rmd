@@ -8,7 +8,43 @@ title: Uporaba Excel Power Query-a za združevanje podatkov iz Si-Stat
 
 Da ne pozabiš vsega naučenega na tečaju napredne uporabe Excela, imaš tukaj osvežitveno nalogo, ki vključuje tudi precej navodil. 
 
-Naloga ima osnovno in napredno verzijo, izberi si tisto, ki ti ustreza, ali pa začni z osnovno in jo potem nadgradi. Vsa navodila potrebna za osnovno verzijo so opisana v nadaljevanju. Za napredno 
+Naloga ima osnovno in napredno verzijo, izberi si tisto, ki ti ustreza, ali pa začni z osnovno in jo potem nadgradi. Vsa navodila potrebna za osnovno verzijo so opisana v nadaljevanju. Za napredno pa bo potrebno malce eksperimentiranja. 
+
+## Osnovna verzija
+
+1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z enakim časovnim intervalom (recimo obe četrtletni).
+
+2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. 
+
+3. Ko imaš vzpostavljeni obe povezavi (ni treba naložiti podatkov, dovolj je vzpostaviti "connection only" povezavo), združi obe tabeli glede na časovno dimenzijo. To bo seveda delovalo samo, če imata obe seriji enake časovne intervale. Če ne, si v napredni verziji naloge ;)
+
+4. Nato dodaj nov stolpec, ki je izračunan iz obeh časovnih serij. 
+
+5. Ko si zadovoljen s tem, kako si pripravil poizvedbo, naloži podatke na nov zavihek in jih prikaži z enostavnim linijskim grafom. 
+
+6. Zdaj se vrni v Power Query Editor in poizvedbi dodaj filter npr. izberi samo podatke po letu 2010. Preveri kaj se je zgodilo z grafom. 
+
+## Napredna verzija 
+
+1. Izberi si dve časovni serie iz dveh različnih tabel na Si-Stat-u z *različnim* časovnim intervalom (recimo ena mesečna in ena letna).
+
+2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. 
+
+3. Tisto serijo, ki ima bolj podrobne podatke, agregiraj na raven druge serije (npr. mesečne podatke agregiraj na letne). Seveda pazi, da izbereš ustrezno funkcijo glede na tip podatka. (Glej razdelek *Agregiranje* spodaj).
+
+4. Ko imaš vzpostavljeni obe povezavi (ni treba naložiti podatkov, dovolj je vzpostaviti "connection only" povezavo), združi obe tabeli glede na časovno dimenzijo. 
+
+5. Nato dodaj nov stolpec, ki je izračunan iz obeh časovnih serij. 
+
+6. Ko si zadovoljen s tem, kako si pripravil poizvedbo, naloži podatke na nov zavihek in jih prikaži z enostavnim linijskim grafom. 
+
+7. Zdaj se vrni v Power Query Editor in poizvedbi dodaj filter npr. izberi samo podatke po letu 2010. Preveri kaj se je zgodilo z grafom. 
+
+## Še naprednejšejša verzija
+
+1. Izberi si dve časovni seriji iz dveh poljubnih (različnih) viron. Npr Si-Stat, Eurostat, obstoječ Excel ali csv ali pdf fajl, nekaj skratka, kar pogosto uporabljaš. Odvisno od vira, ki si si ga izbral, ti bodo spodnja navodila bolj ali manj v pomoč. V vsakem primeru jih preberi, potem pa uporabi google, sodelavce ali Majo Z., da najdeš rešitev kako vzpostaviti želene povezave. 
+
+2. Nadaljuj s točko 2. naprednih navodil.
 
 
 
@@ -154,6 +190,8 @@ S klikom na trikotniček desno od imena stolpca lahko stolpec filtrirate ali raz
 Zavihek Home, *Merge queries*
 
 Za združevanje tabel rabiš imeti vsaj dve tabeli oz. dve povezavi odprti. Poleg tega, morata imeti obe tabeli vsaj en stolpec, po katerem se lahko združita. 
+
+Združevanja se lotiš tako, da odpreš Power Query Editor v eni od obeh tabel. 
 
 Možnih je več tipov združevanj - levo, desno, notranje, ipd., najbolje, da malo eksperimentiraš. Ko potrdiš merge se bo v tabeli pojavil not stolpec z ikonico z dvema puščicama. Na to ikonico klikneš in izbereš katere stolpce iz druge tabele, želiš prikazane (če ne želiš vseh). 
 
