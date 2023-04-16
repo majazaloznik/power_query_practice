@@ -1,0 +1,199 @@
+---
+output:
+  bookdown::pdf_document2: 
+    number_sections: true
+    toc: false
+title: Uporaba Excel Power Query-a za združevanje podatkov iz Si-Stat
+---
+
+Da ne pozabiš vsega naučenega na tečaju napredne uporabe Excela, imaš tukaj osvežitveno nalogo, ki vključuje tudi precej navodil. 
+
+Naloga ima osnovno in napredno verzijo, izberi si tisto, ki ti ustreza, ali pa začni z osnovno in jo potem nadgradi. Vsa navodila potrebna za osnovno verzijo so opisana v nadaljevanju. Za napredno 
+
+
+
+
+
+
+
+
+
+# Priprava poizvedbe na Si-Stat
+
+1. Na strani [Si-Stat](https://pxweb.stat.si/SiStat/sl) poiščeš tabelo iz katere želiš dobiti podatke. 
+
+2. Izbereš želene kategorije za vsako dimenzijo in klikneš "Izpis podatkov".
+
+3. Preveri, da imaš tabelo pravilno zavrteno in orientirano: to pomeni, (i) da imaš podatke za vsako obdobje v svoji vrstici, torej čas poteka od zgoraj navzdol in (ii) da imaš enovrstični header, torej je v stolpcih samo ena dimenzija, ostale pa vse v vrsticah. Da to dosežeš, uporabi gumbke za vrtenje tabele, dokler ne dobiš želenega rezultata. 
+
+```{r, echo=FALSE, out.width="50%"}
+knitr::include_graphics("images/img01.png")
+```                
+
+4. Potem klikni na tekst "`Shrani poizvedbo`" nad tabelo. Ker hočemo dinamično poizvedbo, ki se podaljšuje, preveri, da imaš izbrano prvo možnost "*Stalni začetni in drseči zaključni časovni presek (podaljševanje serije)*".
+
+5. Za izpis serije pa izberi "*CSV (ločeno s podpičjem), brez glave (.csv)*". In klikni na "`Shrani poizvedbo`"
+
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_graphics("images/img02.png")
+```       
+
+6. Prikazalo se ti bo polje z url-jem tvoje poizvedbe. To si skopiraj, ker ga boš rabil pri pripravi povezave v Power Query-u. 
+
+```{r, echo=FALSE, out.width="60%"}
+knitr::include_graphics("images/img03.png")
+```    
+
+# Priprava povezave v Excel Power Query-u. 
+
+1. Odpri nov svež prazen Excel fajl. 
+
+2. Na zavihku `Data` izberi `From Web` 
+
+```{r, echo=FALSE, out.width="60%"}
+knitr::include_graphics("images/img04.png")
+```
+
+3. V polje `URL` skopiraj url, ki si ga dobil v zadnji točki priprave poizvedbe in klikni `OK`.
+
+```{r, echo=FALSE, out.width="60%"}
+knitr::include_graphics("images/img05.png")
+```
+
+4. če je šlo vse po sreči, bi moral videti nekaj podobnega kot je na spodnji sliki. Najbolj pomembno je, da se v tem predogledu vidi več stolpcev. Glej troubleshooting poglavje, če ne gre povsem gladko. 
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img06.png")
+```
+
+5. Zdaj sta na voljo dve možnosti, odvisno od tega kaj nameravaš delati s podatki: podatke lahko naložiš (*Load*) ali pa se lotiš nadaljnih transformacij (*Transform*). Nobena odločitev pa ni dokončna - če podatke naložiš, jih še vedno lahko kasneje spreminjaš in seveda obratno. 
+
+# Nalaganje podatkov
+
+Pri nalaganju podatkov so relevantne naslednje možnosti:
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img07.png")
+```
+
+1. *Load*: default nalaganje naloži tabelo v nov zavihek. 
+
+2. *Load to*: ti da več možnosti, kjer lahko recimo določiš lokacijo tabele. 
+
+3. *Load to*: in izbira *Only create connection* je tudi zelo uporabna možnost, kadar ne rabimo tabele neposredno, ampak jo bomo uporabili kasneje, kot input za novo poizvedbo. 
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img08.png")
+```
+
+Ne glede na to katero možnost si izbral, imaš zdaj v Excelu aktivno povezavo na izbrani vir podatkov. Ta vir lahko urejaš tako, da zavihku *Data* izbereš *Queries & Connections*, kar ti bo odprlo seznam odprtih povezav oziroma poizvedb na desni strani ekrana.  
+
+## Osveževanje podatkov
+
+Povezava na podakte oz. poizvedba, ki si jo pripravil, se ne osvežuje avtomatično kadar pride do spremembe pri viru. 
+
+Podatke lahko osvežiš na več načinov:
+
+1. Z ikonico desno od vsake posamezne povezave. 
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img09.png")
+```
+
+2. Z ikonico *Refresh all* na vrhu zavihka *Data*, ki osveži vse poizvedbe. 
+
+3. Lahko pa si nastaviš nastnosti vsake povezave, kjer določiš kdaj se poizvedba samodejno posodobi. Do tega okenca prideš tako da z desno klikneš na poizvedbo v seznamu na desni strani ekrana in izbereš možnost *Properties* na dnu. 
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img10.png")
+```
+
+
+4. Najbolj uporabna kljukica tukaj je *Refresh data when opening file the file*, ki naredi to, kar piše ;)
+
+5. Velja biti pozoren na opcijo *Enable background refresh*: to se zdi uporabno, ker pomeni, da med osveževanjem lahko uporabljaš Excel in delaš kaj drugega. Ampak pomeni pa tudi, da Excel ne čaka z drugimi stvarmi, medtem ko se v ozadju posodabljajo podatki, in v praksi to lahko pomeni, da recimo vrtilna tabela iz teh podatkov ne bo počakala, da se podatki najprej posodobijo - v tem primeru jo bo treba še enkrat osvežit. Samo omenim, če se komu to zgodi, da ve zakaj. 
+
+6. Poleg tega ni slaba ideja, da povezavo poimenuješ bolj opisno, kar tudi narediš v tem pogovornem okencu, na vrhu. 
+
+
+# Transformacije podatkov
+
+Z izbiro opcije *Transform* preden podatke naložiš, se odpre t.i. "*Power Query Editor*". Ravno tako se odpre, če dvakrat klikneš na poizvedbo na desni strani ekrana. 
+
+Power query editor je tako zelo powerful, da se tukaj niti približno ne moremo dotakniti velike večine funkcionalnosti - vedi le, da če si lahko zamisliš neko transformacijo, se jo verjetno da narediti. Zato vprašaj ali pogooglaj :)
+
+Tukaj bom naštela samo nekaj primerov transformacij, ki lahko pridejo prav:
+
+### Column split
+
+Zavihek home, *Split column*. 
+
+- izberi stolpec in klikni na *Split column* in izberi metodo po kateri hočeš, da se stolpec razdeli. 
+- klasičen primer je recimo `2020Q04` razbiti na stolpca `2020` in `Q04`, tako da ga razdeliš na četrti poziciji.
+
+### Preimenovanje stolpca
+
+Zavihek Transform, *Rename*
+
+- Izberi stolpec in klikni Rename in preimenuj stolpec po želji
+
+### Agregiranje
+
+Zavihek Home ali Trasnform, *Group By*
+
+- Izberi stolpec, po katerem želiš grupirati in klikni Group By
+- v pogovornem okencu, ki se odpre, določi katere agregacije želiš
+- če jih želiš več, klikni na advanced
+- npr, če imaš mesečne podatke, jih lahko združiš po letu in glede na tip podatka izbereš vsote ali povprečja za vsak stolpec, ki te zanima. 
+
+
+### Filtriranje vrstic
+
+S klikom na trikotniček desno od imena stolpca lahko stolpec filtrirate ali razvrstite po želji. 
+
+### Združevanje tabel
+
+Zavihek Home, *Merge queries*
+
+Za združevanje tabel rabiš imeti vsaj dve tabeli oz. dve povezavi odprti. Poleg tega, morata imeti obe tabeli vsaj en stolpec, po katerem se lahko združita. 
+
+Možnih je več tipov združevanj - levo, desno, notranje, ipd., najbolje, da malo eksperimentiraš. Ko potrdiš merge se bo v tabeli pojavil not stolpec z ikonico z dvema puščicama. Na to ikonico klikneš in izbereš katere stolpce iz druge tabele, želiš prikazane (če ne želiš vseh). 
+
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img13.png")
+```
+
+
+## Vrstni red transformacij
+
+
+Po vsaki transformaciji boš opazil, da se v okencu na desni strani dodajajo novi koraki tvoje poizvedbe. 
+
+Tukaj lahko:
+
+- zbrišeš korak s klikom na križec na levi strani pred zapisom
+- spreminjaš vrstni red korakov z metodo "drag and drop"
+- ponovno urejaš posamezen korak, če ga želiš popraviti, tako da dvakrat klikneš na njega. 
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img11.png")
+```
+
+Prvi trije koraki: Source, Promoted Headers in Changed type, se avtomatično pripravijo ob pripravi povezave. Te tri korake res predlagam, da pustiš pri miru, razen, če veš kaj delaš. Ostale korake praviloma dodajaš po vrsti, dokler nisi zadovoljen s predogledom, ki ga vidiš v editorju. 
+
+Vrstni red korakov je pomemben! Recimo, če najprej razdeliš stolpec s četrtletji na leto in četrtletje in potem grupiraš podatke glede na leto, ne moreš tega narediti v obratnem vrstnem redu. Zato se ne ustrašiti, če se ti pojavi spodnje opozorilo: Excel samo preverja, da res želiš nov korak vriniti med že obstoječe - ker ponavadi hočeš dodati korak na koncu. 
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img12.png")
+```
+
+
+Ko si zadovoljen s predogledom poizvedbe, pa izbereš `Close & Load` in, če še nisi, izbereš lokacijo, kamor želiš, da se ti tabela z rezultati poizvedbe naloži.
+
+
+
+
+
+
+
+
+
