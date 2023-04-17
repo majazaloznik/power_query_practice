@@ -2,23 +2,40 @@
 output:
   bookdown::pdf_document2: 
     number_sections: true
-    toc: false
+    toc: no
+    toc_depth: 3
 title: Uporaba Excel Power Query-a za združevanje podatkov iz Si-Stat
 ---
 
-Da ne pozabiš vsega naučenega na tečaju napredne uporabe Excela, imaš tukaj osvežitveno nalogo, ki vključuje tudi precej navodil. 
+Author |  Version        | Status   | Date
+:------:|:--------------:|:--------:|:-----------:
+  mz    |0.1.0          | draft    |   2023-04-13
+  mz    |1.0.0          | draft    |   `r Sys.Date()`
+  
+*Da ne pozabiš vsega naučenega na tečaju napredne uporabe Excela, imaš tukaj osvežitveno domačo nalogo, ki vključuje tudi precej navodil. *
 
-Naloga ima osnovno in napredno verzijo, izberi si tisto, ki ti ustreza, ali pa začni z osnovno in jo potem nadgradi. Vsa navodila potrebna za osnovno verzijo so opisana v nadaljevanju. Za napredno pa bo potrebno malce eksperimentiranja. 
+\renewcommand{\contentsname}{Kazalo}
+\tableofcontents
+
+
+
+
+# Nagradna igra 
+
+Naloga ima več verzij, izberi si tisto, ki ti ustreza, ali pa začni z osnovno in jo potem nadgradi. Vsa navodila potrebna za osnovno in napredno verzijo so opisana v nadaljevanju. Za najnaprednejšejšo pa bo potrebno malce eksperimentiranja. 
+
+Prvi trije, ki končate nalogo, dobite nagrado :)
+
 
 ## Osnovna verzija
 
-1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z enakim časovnim intervalom (recimo obe četrtletni).
+1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z enakim časovnim intervalom (recimo obe četrtletni). (Zaradi točke 4. premisli kateri spremenljivke izbereš.)
 
 2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. 
 
-3. Ko imaš vzpostavljeni obe povezavi (ni treba naložiti podatkov, dovolj je vzpostaviti "connection only" povezavo), združi obe tabeli glede na časovno dimenzijo. To bo seveda delovalo samo, če imata obe seriji enake časovne intervale. Če ne, si v napredni verziji naloge ;)
+3. Ko imaš vzpostavljeni obe povezavi (ni treba naložiti podatkov, dovolj je vzpostaviti "connection only" povezavo), združi obe tabeli glede na časovno dimenzijo. (Glej razdelek *Združevanje tabel* spodaj.) To bo seveda delovalo samo, če imata obe seriji enake časovne intervale. Če ne, si v napredni verziji naloge in kar pogumno nadaljuj tam!
 
-4. Nato dodaj nov stolpec, ki je izračunan iz obeh časovnih serij. 
+4. Nato dodaj nov stolpec, ki je izračunan iz obeh časovnih serij. (Glej razdelek *Dodajanje novega stolpca* spodaj.)
 
 5. Ko si zadovoljen s tem, kako si pripravil poizvedbo, naloži podatke na nov zavihek in jih prikaži z enostavnim linijskim grafom. 
 
@@ -26,23 +43,23 @@ Naloga ima osnovno in napredno verzijo, izberi si tisto, ki ti ustreza, ali pa z
 
 ## Napredna verzija 
 
-1. Izberi si dve časovni serie iz dveh različnih tabel na Si-Stat-u z *različnim* časovnim intervalom (recimo ena mesečna in ena letna).
+1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z *različnim* časovnim intervalom (recimo ena mesečna in ena letna).  (Zaradi točke 5. premisli kateri spremenljivke izbereš.)
 
 2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. 
 
 3. Tisto serijo, ki ima bolj podrobne podatke, agregiraj na raven druge serije (npr. mesečne podatke agregiraj na letne). Seveda pazi, da izbereš ustrezno funkcijo glede na tip podatka. (Glej razdelek *Agregiranje* spodaj).
 
-4. Ko imaš vzpostavljeni obe povezavi (ni treba naložiti podatkov, dovolj je vzpostaviti "connection only" povezavo), združi obe tabeli glede na časovno dimenzijo. 
+4. Ko imaš vzpostavljeni obe povezavi (ni treba naložiti podatkov, dovolj je vzpostaviti "connection only" povezavo), združi obe tabeli glede na časovno dimenzijo. (Glej razdelek *Združevanje tabel* spodaj.)
 
-5. Nato dodaj nov stolpec, ki je izračunan iz obeh časovnih serij. 
+5. Nato dodaj nov stolpec, ki je izračunan iz obeh časovnih serij. (Glej razdelek *Dodajanje novega stolpca* spodaj.)
 
 6. Ko si zadovoljen s tem, kako si pripravil poizvedbo, naloži podatke na nov zavihek in jih prikaži z enostavnim linijskim grafom. 
 
 7. Zdaj se vrni v Power Query Editor in poizvedbi dodaj filter npr. izberi samo podatke po letu 2010. Preveri kaj se je zgodilo z grafom. 
 
-## Še naprednejšejša verzija
+## Še najnaprednejšejša verzija
 
-1. Izberi si dve časovni seriji iz dveh poljubnih (različnih) viron. Npr Si-Stat, Eurostat, obstoječ Excel ali csv ali pdf fajl, nekaj skratka, kar pogosto uporabljaš. Odvisno od vira, ki si si ga izbral, ti bodo spodnja navodila bolj ali manj v pomoč. V vsakem primeru jih preberi, potem pa uporabi google, sodelavce ali Majo Z., da najdeš rešitev kako vzpostaviti želene povezave. 
+1. Izberi si dve časovni seriji iz dveh poljubnih (različnih) virov. Npr Si-Stat, Eurostat, obstoječ Excel ali csv ali pdf fajl na tvojem disku - najbolje nekaj, kar sicer pogosto uporabljaš. Odvisno od vira, ki si si ga izbral, ti bodo spodnja navodila bolj ali manj v pomoč. V vsakem primeru jih preberi, potem pa uporabi google, sodelavce ali Majo Z., da najdeš rešitev kako vzpostaviti želene povezave. 
 
 2. Nadaljuj s točko 2. naprednih navodil.
 
@@ -102,7 +119,7 @@ knitr::include_graphics("images/img05.png")
 knitr::include_graphics("images/img06.png")
 ```
 
-5. Zdaj sta na voljo dve možnosti, odvisno od tega kaj nameravaš delati s podatki: podatke lahko naložiš (*Load*) ali pa se lotiš nadaljnih transformacij (*Transform*). Nobena odločitev pa ni dokončna - če podatke naložiš, jih še vedno lahko kasneje spreminjaš in seveda obratno. 
+5. Zdaj sta na voljo dve možnosti, odvisno od tega kaj nameravaš delati s podatki: podatke lahko naložiš (*Load*) ali pa se lotiš nadaljnjih transformacij (*Transform*). Nobena odločitev pa ni dokončna - če podatke naložiš, jih še vedno lahko kasneje spreminjaš in seveda obratno. 
 
 # Nalaganje podatkov
 
@@ -125,7 +142,7 @@ Ne glede na to katero možnost si izbral, imaš zdaj v Excelu aktivno povezavo n
 
 ## Osveževanje podatkov
 
-Povezava na podakte oz. poizvedba, ki si jo pripravil, se ne osvežuje avtomatično kadar pride do spremembe pri viru. 
+Povezava na podatke oz. poizvedba, ki si jo pripravil, se ne osvežuje avtomatično kadar pride do spremembe pri viru. 
 
 Podatke lahko osvežiš na več načinov:
 
@@ -136,7 +153,7 @@ knitr::include_graphics("images/img09.png")
 
 2. Z ikonico *Refresh all* na vrhu zavihka *Data*, ki osveži vse poizvedbe. 
 
-3. Lahko pa si nastaviš nastnosti vsake povezave, kjer določiš kdaj se poizvedba samodejno posodobi. Do tega okenca prideš tako da z desno klikneš na poizvedbo v seznamu na desni strani ekrana in izbereš možnost *Properties* na dnu. 
+3. Lahko pa si nastaviš lastnosti vsake povezave, kjer določiš kdaj se poizvedba samodejno posodobi. Do tega okenca prideš tako da z desno klikneš na poizvedbo v seznamu na desni strani ekrana in izbereš možnost *Properties* na dnu. 
 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("images/img10.png")
@@ -147,7 +164,7 @@ knitr::include_graphics("images/img10.png")
 
 5. Velja biti pozoren na opcijo *Enable background refresh*: to se zdi uporabno, ker pomeni, da med osveževanjem lahko uporabljaš Excel in delaš kaj drugega. Ampak pomeni pa tudi, da Excel ne čaka z drugimi stvarmi, medtem ko se v ozadju posodabljajo podatki, in v praksi to lahko pomeni, da recimo vrtilna tabela iz teh podatkov ne bo počakala, da se podatki najprej posodobijo - v tem primeru jo bo treba še enkrat osvežit. Samo omenim, če se komu to zgodi, da ve zakaj. 
 
-6. Poleg tega ni slaba ideja, da povezavo poimenuješ bolj opisno, kar tudi narediš v tem pogovornem okencu, na vrhu. 
+6. Poleg tega ni slaba ideja, da povezavo poimenuješ bolj opisno, kar tudi narediš v tem pogovornem okencu, na vrhu v polju *Query name* in po želji še *Description*. 
 
 
 # Transformacije podatkov
@@ -155,6 +172,8 @@ knitr::include_graphics("images/img10.png")
 Z izbiro opcije *Transform* preden podatke naložiš, se odpre t.i. "*Power Query Editor*". Ravno tako se odpre, če dvakrat klikneš na poizvedbo na desni strani ekrana. 
 
 Power query editor je tako zelo powerful, da se tukaj niti približno ne moremo dotakniti velike večine funkcionalnosti - vedi le, da če si lahko zamisliš neko transformacijo, se jo verjetno da narediti. Zato vprašaj ali pogooglaj :)
+
+## Pogoste transformacije
 
 Tukaj bom naštela samo nekaj primerov transformacij, ki lahko pridejo prav:
 
@@ -165,35 +184,41 @@ Zavihek home, *Split column*.
 - izberi stolpec in klikni na *Split column* in izberi metodo po kateri hočeš, da se stolpec razdeli. 
 - klasičen primer je recimo `2020Q04` razbiti na stolpca `2020` in `Q04`, tako da ga razdeliš na četrti poziciji.
 
+### Dodajanje novega stolpca
+
+Zavihek *Add column*, gumb *Custom Column*. 
+
+- izberi ime novega stolpca in v spodnje okence vnesi formulo tako, da s pomočjo gumba *Insert* prestavljaš želene stolpce iz desnega okenca. 
+
 ### Preimenovanje stolpca
 
 Zavihek Transform, *Rename*
 
-- Izberi stolpec in klikni Rename in preimenuj stolpec po želji
+- Izberi stolpec in klikni Rename in preimenuj stolpec po želji.
 
 ### Agregiranje
 
 Zavihek Home ali Trasnform, *Group By*
 
-- Izberi stolpec, po katerem želiš grupirati in klikni Group By
+- Izberi stolpec, po katerem želiš grupirati in klikni *Group By*
 - v pogovornem okencu, ki se odpre, določi katere agregacije želiš
-- če jih želiš več, klikni na advanced
+- če jih želiš več, klikni na *Advanced*
 - npr, če imaš mesečne podatke, jih lahko združiš po letu in glede na tip podatka izbereš vsote ali povprečja za vsak stolpec, ki te zanima. 
 
 
 ### Filtriranje vrstic
 
-S klikom na trikotniček desno od imena stolpca lahko stolpec filtrirate ali razvrstite po želji. 
+S klikom na trikotniček desno od imena stolpca lahko stolpec filtriraš ali razvrstiš po želji. 
 
 ### Združevanje tabel
 
 Zavihek Home, *Merge queries*
 
-Za združevanje tabel rabiš imeti vsaj dve tabeli oz. dve povezavi odprti. Poleg tega, morata imeti obe tabeli vsaj en stolpec, po katerem se lahko združita. 
+Za združevanje tabel rabiš imeti vsaj dve tabeli oz. dve povezavi odprti. Poleg tega morata imeti obe tabeli vsaj en stolpec, po katerem se lahko združita. 
 
 Združevanja se lotiš tako, da odpreš Power Query Editor v eni od obeh tabel. 
 
-Možnih je več tipov združevanj - levo, desno, notranje, ipd., najbolje, da malo eksperimentiraš. Ko potrdiš merge se bo v tabeli pojavil not stolpec z ikonico z dvema puščicama. Na to ikonico klikneš in izbereš katere stolpce iz druge tabele, želiš prikazane (če ne želiš vseh). 
+Možnih je več tipov združevanj - levo, desno, notranje ipd. najbolje, da malo eksperimentiraš. Ko potrdiš merge, se bo v tabeli pojavil not stolpec z ikonico z dvema puščicama. Na to ikonico klikneš in izbereš katere stolpce iz druge tabele želiš prikazane (če ne želiš vseh). 
 
 
 ```{r, echo=FALSE, out.width="100%"}
@@ -210,15 +235,15 @@ Tukaj lahko:
 
 - zbrišeš korak s klikom na križec na levi strani pred zapisom
 - spreminjaš vrstni red korakov z metodo "drag and drop"
-- ponovno urejaš posamezen korak, če ga želiš popraviti, tako da dvakrat klikneš na njega. 
+- ponovno urejaš posamezen korak, če ga želiš popraviti, tako, da dvakrat klikneš na njega. 
 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("images/img11.png")
 ```
 
-Prvi trije koraki: Source, Promoted Headers in Changed type, se avtomatično pripravijo ob pripravi povezave. Te tri korake res predlagam, da pustiš pri miru, razen, če veš kaj delaš. Ostale korake praviloma dodajaš po vrsti, dokler nisi zadovoljen s predogledom, ki ga vidiš v editorju. 
+Prvi trije koraki: Source, Promoted Headers in Changed type se avtomatično pripravijo ob pripravi povezave. Te tri korake res predlagam, da pustiš pri miru, razen če veš, kaj delaš (*cf.* Troubleshooting). Ostale korake praviloma dodajaš po vrsti, dokler nisi zadovoljen s predogledom, ki ga vidiš v editorju. 
 
-Vrstni red korakov je pomemben! Recimo, če najprej razdeliš stolpec s četrtletji na leto in četrtletje in potem grupiraš podatke glede na leto, ne moreš tega narediti v obratnem vrstnem redu. Zato se ne ustrašiti, če se ti pojavi spodnje opozorilo: Excel samo preverja, da res želiš nov korak vriniti med že obstoječe - ker ponavadi hočeš dodati korak na koncu. 
+Vrstni red korakov je pomemben! Recimo če najprej razdeliš stolpec s četrtletji na leto in četrtletje in potem grupiraš podatke glede na leto, ne moreš tega narediti v obratnem vrstnem redu. Zato se ne ustrašiti, če se ti pojavi spodnje opozorilo: Excel samo preverja, da res želiš nov korak vriniti med že obstoječe - ker ponavadi hočeš dodati korak na koncu. 
 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("images/img12.png")
@@ -228,8 +253,78 @@ knitr::include_graphics("images/img12.png")
 Ko si zadovoljen s predogledom poizvedbe, pa izbereš `Close & Load` in, če še nisi, izbereš lokacijo, kamor želiš, da se ti tabela z rezultati poizvedbe naloži.
 
 
+# Troubleshooting
+
+## Troubleshooting manjkajočih stolpcev
+
+Včasih se - iz meni misterijoznih razlogov - zgodi, da pri uvozu podatkov Excel noče pravilno razumeti stolpcev oz. delimiterjev. Težko reproduciram to situacijo, ampak po mojih izkušnjah se manj pogosto zgodi, če:
+
+* startaš z novim, svežim Excel fajlom,
+* Si-stat poizvedbo izvoziš brez glave (glava tukaj ne pomeni headerja, torej vrstice z imeni stolpcev, ampak tekst nad tem, ki ni del prave tabele),
+* vse v prvo narediš prav :)
+
+Včasih se navkljub vsemu zgodi naslednja situacija: čeprav imaš kot delimiter izbrano podpičje (*semicolon*), v predogledu vidiš samo prvi stolpec.
 
 
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img14.png")
+```
+
+
+V tem primeru - če nočeš začeti spet od začetka - lahko zadevo rešiš takole: klikni na gumb *Transform*, da se odpre Power Query Editor. Tu zdaj vidiš samo prvi stolpec, zato *enkrat* klikni na prvi korak poizvedbe v desnem okencu: *Source*
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img15.png")
+```
+
+Zdaj pa poglej v funkcijsko vrstico, kjer se ti je izpisala koda za ta korak poizvedbe, ki izgleda približno takole:
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img16.png")
+```
+
+Težava je torej, da ima power query navodilo, da uvozi samo en stolpec. Zdaj pa ročno popravi število stolpcev za tekstom `Columns=` in pritisni enter. Če ne veš točno, koliko stolpcev je probaj in ko se posodobi predogled, boš videl ali imaš vse podatke ali je treba število stolpcev povečati. 
+
+
+## Troubleshooting manjkajočih decimalk
+
+Če boš na Si-Statu izbral sprejemljivko, ki ima decimalke, se bo zgodilo naslednje: Si-Stat pri izvozu uporablja angleški sistem oznak, torej decimalno piko in ne vejice, toda tvoj Excel je nastavljen na slovenske regionalne nastavitve in zato decimalne pike ne razume. 
+
+Kot smo videli v razdelku *Vrstni red transformacij*, se ti ob uvozu avtomatično naredijo prvi trije koraki poizvedbe: Source, Promoted Headers in Changed type, za katere smo takrat rekli, da jih je najbolje pustiti pri miru. No, razen, če imaš v podatkih decimalke. 
+
+Če imaš v podatkih decimalke, potem ti ne bo všeč kaj se je zgodilo v koraku *Change type*, ker je namreč ta korak verjetno narobe določil tip spremenjlivke. Namesto decimalne številke je določil tip števke (integer - `Int64.Type`) in tako je `80.0` namesto `80,0`, postala `800`. 
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img17.png")
+```
+
+V takem primeru moramo ta *Changed type* korak zbrisati oz. ga popraviti po svoje. Kako točno se tega lotiš, je odvisno od tega koliko stolpcev imaš. 
+
+Če gre samo za enega oz. malo število stolpcev, potem lahko enostavno zbrišeš *Changed type* korak in vstaviš nove(ga). To pa narediš na naslednji način:
+
+Izbereš dotičen stolpec in z desno klineš nanj. Nato izbereš *Change type* in *Using locale..*. 
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img18.png")
+```
+
+V okencu, ki se ti odpre zdaj izbereš *Decimal number* in pod locale enega, katerega koli, od angleških.
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img19.png")
+```
+
+Če imaš več stolpcev, se ti ne bo dalo za vsakega posebaj narediti novega koraka, da nadomestiš izbrisan originalni *Change type* korak, zato je lažje, če neposredno popraviš ta korak sam in sicer tako da v funkcijski vrstici (ki si jo lahko razširiš za lažje delo) narediš naslednje:
+
+1. zamenjaš tekst `Int64.Type` za tekst `type number` pri vseh stolpcih, ki to potrebujejo in
+2. na koncu, tik pred zadnjim oklepajem, dodaš tekst `"en-US"`.
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img20.png")
+```
+
+
+## Troubleshooting neobičajnih manjkajočih vrednosti
 
 
 
