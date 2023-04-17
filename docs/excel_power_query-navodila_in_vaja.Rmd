@@ -12,7 +12,7 @@ Author |  Version        | Status   | Date
   mz    |0.1.0          | draft    |   2023-04-13
   mz    |1.0.0          | draft    |   `r Sys.Date()`
   
-*Da ne pozabiš vsega naučenega na tečaju napredne uporabe Excela, imaš tukaj osvežitveno domačo nalogo, ki vključuje tudi precej navodil. *
+*Da ne pozabiš vsega naučenega na tečaju napredne uporabe Excela, imaš tukaj osvežitveno domačo nalogo, ki vključuje tudi precej navodil in poglavje Troubleshooting.*
 
 \renewcommand{\contentsname}{Kazalo}
 \tableofcontents
@@ -173,6 +173,8 @@ Z izbiro opcije *Transform* preden podatke naložiš, se odpre t.i. "*Power Quer
 
 Power query editor je tako zelo powerful, da se tukaj niti približno ne moremo dotakniti velike večine funkcionalnosti - vedi le, da če si lahko zamisliš neko transformacijo, se jo verjetno da narediti. Zato vprašaj ali pogooglaj :)
 
+*Pozor! Če iz Si-Stata uvažaš podatke z decimalnimi številkami in/ali podatke z manjkajočimi vrednostmi, potem si nujno poglej zadnja dva razdelka troubleshooting-a, kjer so razloženi koraki, kako podatke pravilno transformirati v tem primerih. *
+
 ## Pogoste transformacije
 
 Tukaj bom naštela samo nekaj primerov transformacij, ki lahko pridejo prav:
@@ -290,43 +292,46 @@ Težava je torej, da ima power query navodilo, da uvozi samo en stolpec. Zdaj pa
 
 Če boš na Si-Statu izbral sprejemljivko, ki ima decimalke, se bo zgodilo naslednje: Si-Stat pri izvozu uporablja angleški sistem oznak, torej decimalno piko in ne vejice, toda tvoj Excel je nastavljen na slovenske regionalne nastavitve in zato decimalne pike ne razume. 
 
-Kot smo videli v razdelku *Vrstni red transformacij*, se ti ob uvozu avtomatično naredijo prvi trije koraki poizvedbe: Source, Promoted Headers in Changed type, za katere smo takrat rekli, da jih je najbolje pustiti pri miru. No, razen, če imaš v podatkih decimalke. 
+Če imaš v podatkih decimalke, potem ti ne bo všeč, kaj se je zgodilo v koraku *Change type*, ker je namreč ta korak verjetno narobe določil tip spremenjlivke. Namesto decimalne številke je določil tip števke (integer -- `Int64.Type`) in tako je `80.0` namesto `80,0`, postala `800`. 
 
-Če imaš v podatkih decimalke, potem ti ne bo všeč kaj se je zgodilo v koraku *Change type*, ker je namreč ta korak verjetno narobe določil tip spremenjlivke. Namesto decimalne številke je določil tip števke (integer - `Int64.Type`) in tako je `80.0` namesto `80,0`, postala `800`. 
-
-```{r, echo=FALSE, out.width="100%"}
+```{r, echo=FALSE, out.width="100%"} 
+ 
 knitr::include_graphics("images/img17.png")
+
 ```
 
-V takem primeru moramo ta *Changed type* korak zbrisati oz. ga popraviti po svoje. Kako točno se tega lotiš, je odvisno od tega koliko stolpcev imaš. 
-
-Če gre samo za enega oz. malo število stolpcev, potem lahko enostavno zbrišeš *Changed type* korak in vstaviš nove(ga). To pa narediš na naslednji način:
-
-Izbereš dotičen stolpec in z desno klineš nanj. Nato izbereš *Change type* in *Using locale..*. 
+Najenostavnejši način, ki sem ga našla do zdaj, je, da na zavihku *Data* izbereš gumb *Get data* in na koncu seznama *Query options*. V okencu, ki se odpre, izbereš pod *Regional settings* eno -- katerokoli -- od angleških možnosti. 
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("images/img18.png")
+knitr::include_graphics("images/img21.png")
 ```
 
-V okencu, ki se ti odpre zdaj izbereš *Decimal number* in pod locale enega, katerega koli, od angleških.
+Potem moraš najverjetneje ponoviti uvoz, da 'zagrabi'. 
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("images/img19.png")
-```
-
-Če imaš več stolpcev, se ti ne bo dalo za vsakega posebaj narediti novega koraka, da nadomestiš izbrisan originalni *Change type* korak, zato je lažje, če neposredno popraviš ta korak sam in sicer tako da v funkcijski vrstici (ki si jo lahko razširiš za lažje delo) narediš naslednje:
-
-1. zamenjaš tekst `Int64.Type` za tekst `type number` pri vseh stolpcih, ki to potrebujejo in
-2. na koncu, tik pred zadnjim oklepajem, dodaš tekst `"en-US"`.
-
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("images/img20.png")
-```
+S to rešitvijo je seveda potencialna težava, če imaš v enem fajlu povezave na vire, ki uporabljajo različne sisteme: enega z decimalnimi vejicami in enega z decimalnimi pikami. Potem se je treba zadeve lotiti drugače, tako da popraviš samo poizvedbo v koraku *Change type*, ampak računam, da je to tako redko, da ne bom še tega malce bolj zakompliciranega postopka tukaj razlagala, seveda pa me lahko vedno pridete vprašati. 
 
 
 ## Troubleshooting neobičajnih manjkajočih vrednosti
 
+Če boš na Si-Statu izbral spremenljivko, ki ima manjkajoče vrednosti, bodo te verjetno označene s tremi pikami (`...`) ali čem podobnim, česar Excel ne bo razpoznal kot manjkajočo vrednost. 
 
+V tem primeru bo stolpec uvozil kot tekst namesto kot številko, kar pa ti lahko povzroča težave kasneje, zato je to najbolje urediti že v Power Query-u. 
+
+Najprej se na desnem seznamu korakov postavi na obstoječ korak *Change Type*. Nato se postavi na dotični stolpec in iz zgornjega menija ali iz menija po desnem kliku izberi možnost *Data Type* ali *Change data type* in izberi ustrezen tip - verjetno *Decimal number* ali pa *Whole number*. 
+
+Power query te bo opozoril, da stolpec že ima spremembo tipa, in na to mu odgovoriš, da želiš zamenjati to spremembo: *Replace current*.
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img22.png")
+```
+
+Po tej spremembi boš opazil naslednje: namesto `...` je zdaj v teh poljih *Error*, ker seveda tri pike niso pravilnega tipa. Zato je potreben naslednji korak: errorje je treba zamenjati na `null`. 
+
+Klikni na mali trikotniček zraven gumba *Replace values* in izberi drugo možnost: *Replace errors*. V okencu, ki se ti odpre, v polje vpiši *null* in klikni OK. 
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img23.png")
+```
 
 
 
