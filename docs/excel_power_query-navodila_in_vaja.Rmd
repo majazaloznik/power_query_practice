@@ -29,13 +29,13 @@ Prvi trije, ki končate nalogo, dobite nagrado :)
 
 ## Osnovna verzija
 
-1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z enakim časovnim intervalom (recimo obe četrtletni). (Zaradi točke 4. premisli, kateri spremenljivke izbereš.)
+1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z enakim časovnim intervalom (recimo obe četrtletni). (Zaradi točke 4. premisli, kateri spremenljivki izbereš.)
 
-2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. 
+2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. (Skoraj 100% boš imel podatke z decimalkami, zato ne nujno preberi razdelek \@ref(dec) o manjkajočih decimalnih vejicah!)
 
-3. Ko imaš vzpostavljeni obe povezavi (ni treba naložiti podatkov, dovolj je vzpostaviti "connection only" povezavo), združi obe tabeli glede na časovno dimenzijo. (Glej razdelek *Združevanje tabel* spodaj.) To bo seveda delovalo samo, če imata obe seriji enake časovne intervale. Če ne, si v napredni verziji naloge in kar pogumno nadaljuj tam!
+3. Ko imaš vzpostavljeni obe povezavi (ni treba naložiti podatkov, dovolj je vzpostaviti "connection only" povezavo), združi obe tabeli glede na časovno dimenzijo. (Glej razdelek \@ref(sec1) *Združevanje tabel*.) To bo seveda delovalo samo, če imata obe seriji enake časovne intervale. Če ne, si v napredni verziji naloge in kar pogumno nadaljuj tam!
 
-4. Nato dodaj nov stolpec, ki je izračunan iz obeh časovnih serij. (Glej razdelek *Dodajanje novega stolpca* spodaj.)
+4. Nato dodaj nov stolpec, ki je izračunan iz obeh časovnih serij. (Glej razdelek \@ref(sec3)  *Dodajanje novega stolpca*.)
 
 5. Ko si zadovoljen s tem, kako si pripravil poizvedbo, naloži podatke na nov zavihek in jih prikaži z enostavnim linijskim grafom. 
 
@@ -43,15 +43,15 @@ Prvi trije, ki končate nalogo, dobite nagrado :)
 
 ## Napredna verzija 
 
-1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z *različnim* časovnim intervalom (recimo ena mesečna in ena letna).  (Zaradi točke 5. premisli, kateri spremenljivke izbereš.)
+1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z *različnim* časovnim intervalom (recimo ena mesečna in ena letna).  (Zaradi točke 5. premisli, kateri spremenljivki izbereš.)
 
-2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. 
+2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. (Skoraj 100% boš imel podatke z decimalkami, zato ne nujno preberi razdelek \@ref(dec) o manjkajočih decimalnih vejicah!)
 
-3. Tisto serijo, ki ima bolj podrobne podatke, agregiraj na raven druge serije (npr. mesečne podatke agregiraj na letne). Seveda pazi, da izbereš ustrezno funkcijo glede na tip podatka. (Glej razdelek *Agregiranje* spodaj).
+3. Tisto serijo, ki ima bolj podrobne podatke, agregiraj na raven druge serije (npr. mesečne podatke agregiraj na letne). Seveda pazi, da izbereš ustrezno funkcijo glede na tip podatka. (Glej razdelek \@ref(sec2) *Agregiranje*.)
 
-4. Ko imaš vzpostavljeni obe povezavi (ni treba naložiti podatkov, dovolj je vzpostaviti "connection only" povezavo), združi obe tabeli glede na časovno dimenzijo. (Glej razdelek *Združevanje tabel* spodaj.)
+4. Ko imaš vzpostavljeni obe povezavi (ni treba naložiti podatkov, dovolj je vzpostaviti "connection only" povezavo), združi obe tabeli glede na časovno dimenzijo. (Glej razdelek \@ref(sec1) *Združevanje tabel*.)
 
-5. Nato dodaj nov stolpec, ki je izračunan iz obeh časovnih serij. (Glej razdelek *Dodajanje novega stolpca* spodaj.)
+5. Nato dodaj nov stolpec, ki je izračunan iz obeh časovnih serij. (Glej razdelek \@ref(sec3)  *Dodajanje novega stolpca*.)
 
 6. Ko si zadovoljen s tem, kako si pripravil poizvedbo, naloži podatke na nov zavihek in jih prikaži z enostavnim linijskim grafom. 
 
@@ -179,11 +179,34 @@ Zavihek home, *Split column*.
 - izberi stolpec in klikni na *Split column* in izberi metodo po kateri hočeš, da se stolpec razdeli. 
 - klasičen primer je recimo `2020Q04` razbiti na stolpca `2020` in `Q04`, tako da ga razdeliš na četrti poziciji.
 
-### Dodajanje novega stolpca
+### Replace values
+
+Zavihek Home, *Replace values*.
+
+Se lahko uporablja kadar želiš zamenjati celotno vsebino celice:
+
+- izberi stolpec, ki ga želiš popraviti in klikni na *Replace values* in vnesi vrednsti v polji *Value to find* in  *Replace with*, npr. "Podatki z izločenim vplivom sezone" in  "Desezonirani podatki". 
+
+Lahko pa to transformacijo uporabiš tudi, kadar želiš spremeniti ali odstraniti samo del besedila, npr. če želiš iz "Skupaj dejavnosti" spremeniti v "Skupaj", potem lahko v okence *Value to find* vneseš "dejavnosti" in *Replace with* pustiš prazno. 
+
+Ta transformacija bi lahko bila tudi uporabna, če se želiš znebiti tistih pik, ki jih SURS uporablja za prikaz hierarhičnosti kategorij. Vendar je potrebno to narediti za vsa možna števila pik, zato je morda lažja rešitev v naslednjem razdelku.
+
+
+### Dodajanje novega stolpca {#sec3}
 
 Zavihek *Add column*, gumb *Custom Column*. 
 
-- izberi ime novega stolpca in v spodnje okence vnesi formulo tako, da s pomočjo gumba *Insert* prestavljaš želene stolpce iz desnega okenca. 
+- klikni na gumb *Custom Column* in izberi ime novega stolpca ter v spodnje okence vnesi formulo tako, da s pomočjo gumba *Insert* prestavljaš želene stolpce iz desnega okenca. 
+
+V okencu *Custom column formula* poleg enostavnih operacij med stolpci lahko uporabiš **ogromno število** *Power query funkcij*, ki jih ne bom tukaj obravnavala. Ampak samo za primer, kako bi se znebili tistih pik omenjenih zgoraj. 
+
+- klikni na gumb *Custom Column* in izberi ime novega stolpca in v okence vnesi funkcijo `Text.Remove`, tako kot je prikazano na sliki spodaj. 
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/img25.png")
+```
+
+Na dnu okenca je tudi link [*Learn about power query formulas*](https://learn.microsoft.com/en-gb/powerquery-m/power-query-m-function-reference), kjer lahko spoznate bogastvo funkcionalnosti, ki so na voljo. 
 
 ### Preimenovanje stolpca
 
@@ -191,7 +214,7 @@ Zavihek Transform, *Rename*
 
 - Izberi stolpec in klikni Rename in preimenuj stolpec po želji.
 
-### Agregiranje
+### Agregiranje {#sec2}
 
 Zavihek Home ali Trasnform, *Group By*
 
@@ -201,11 +224,11 @@ Zavihek Home ali Trasnform, *Group By*
 - npr. če imaš mesečne podatke, jih lahko združiš po letu in glede na tip podatka izbereš vsote ali povprečja za vsak stolpec, ki te zanima. 
 
 
-### Filtriranje vrstic
+### Filtriranje vrstic 
 
 S klikom na trikotniček desno od imena stolpca lahko stolpec filtriraš ali razvrstiš po želji. 
 
-### Združevanje tabel
+### Združevanje tabel {#sec1}
 
 Zavihek Home, *Merge queries*
 
@@ -213,8 +236,9 @@ Za združevanje tabel rabiš imeti vsaj dve tabeli oz. dve povezavi odprti. Pole
 
 Združevanja se lotiš tako, da odpreš Power Query Editor v eni od obeh tabel. 
 
-Možnih je več tipov združevanj - levo, desno, notranje ipd. najbolje, da malo eksperimentiraš. Ko potrdiš merge, se bo v tabeli pojavil not stolpec z ikonico z dvema puščicama. Na to ikonico klikneš in izbereš katere stolpce iz druge tabele želiš prikazane (če ne želiš vseh). 
+Možnih je več tipov združevanj - levo, desno, notranje ipd. najbolje, da malo eksperimentiraš. 
 
+Ko potrdiš merge, se bo v tabeli pojavil not stolpec z ikonico z dvema puščicama. Na to ikonico klikneš in izbereš katere stolpce iz druge tabele želiš prikazane (če ne želiš vseh). 
 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("images/img13.png")
@@ -281,7 +305,7 @@ knitr::include_graphics("images/img16.png")
 Težava je torej, da ima power query navodilo, da uvozi samo en stolpec. Zdaj pa ročno popravi število stolpcev za tekstom `Columns=` in pritisni enter. Če ne veš točno, koliko stolpcev je probaj in ko se posodobi predogled, boš videl ali imaš vse podatke ali je treba število stolpcev povečati. 
 
 
-## Troubleshooting manjkajočih decimalk
+## Troubleshooting manjkajočih decimalk {#dec}
 
 Če boš na Si-Statu izbral sprejemljivko, ki ima decimalke, se bo zgodilo naslednje: Si-Stat pri izvozu uporablja angleški sistem oznak, torej decimalno piko in ne vejice, toda tvoj Excel je nastavljen na slovenske regionalne nastavitve in zato decimalne pike ne razume. 
 
