@@ -22,14 +22,14 @@ Author |  Version        | Status   | Date
 
 # Nagradna igra 
 
-Naloga ima več verzij, izberi si tisto, ki ti ustreza, ali pa začni z osnovno in jo potem nadgradi. Vsa navodila potrebna za osnovno in napredno verzijo so opisana v nadaljevanju. Za najnaprednejšejšo pa bo potrebno malce eksperimentiranja. 
+Naloga ima več verzij: izberi si tisto, ki ti ustreza, ali pa začni z osnovno in jo potem nadgradi. Vsa navodila, potrebna za osnovno in napredno verzijo, so opisana v nadaljevanju. Za najnaprednejšejšo pa bo potrebno malce eksperimentiranja. 
 
 Prvi trije, ki končate nalogo, dobite nagrado :)
 
 
 ## Osnovna verzija
 
-1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z enakim časovnim intervalom (recimo obe četrtletni). (Zaradi točke 4. premisli kateri spremenljivke izbereš.)
+1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z enakim časovnim intervalom (recimo obe četrtletni). (Zaradi točke 4. premisli, kateri spremenljivke izbereš.)
 
 2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. 
 
@@ -39,11 +39,11 @@ Prvi trije, ki končate nalogo, dobite nagrado :)
 
 5. Ko si zadovoljen s tem, kako si pripravil poizvedbo, naloži podatke na nov zavihek in jih prikaži z enostavnim linijskim grafom. 
 
-6. Zdaj se vrni v Power Query Editor in poizvedbi dodaj filter npr. izberi samo podatke po letu 2010. Preveri kaj se je zgodilo z grafom. 
+6. Zdaj se vrni v Power Query Editor in poizvedbi dodaj filter, npr. izberi samo podatke po letu 2010. Preveri, kaj se je zgodilo z grafom. 
 
 ## Napredna verzija 
 
-1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z *različnim* časovnim intervalom (recimo ena mesečna in ena letna).  (Zaradi točke 5. premisli kateri spremenljivke izbereš.)
+1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z *različnim* časovnim intervalom (recimo ena mesečna in ena letna).  (Zaradi točke 5. premisli, kateri spremenljivke izbereš.)
 
 2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. 
 
@@ -55,20 +55,13 @@ Prvi trije, ki končate nalogo, dobite nagrado :)
 
 6. Ko si zadovoljen s tem, kako si pripravil poizvedbo, naloži podatke na nov zavihek in jih prikaži z enostavnim linijskim grafom. 
 
-7. Zdaj se vrni v Power Query Editor in poizvedbi dodaj filter npr. izberi samo podatke po letu 2010. Preveri kaj se je zgodilo z grafom. 
+7. Zdaj se vrni v Power Query Editor in poizvedbi dodaj filter, npr. izberi samo podatke po letu 2010. Preveri, kaj se je zgodilo z grafom. 
 
 ## Še najnaprednejšejša verzija
 
-1. Izberi si dve časovni seriji iz dveh poljubnih (različnih) virov. Npr Si-Stat, Eurostat, obstoječ Excel ali csv ali pdf fajl na tvojem disku - najbolje nekaj, kar sicer pogosto uporabljaš. Odvisno od vira, ki si si ga izbral, ti bodo spodnja navodila bolj ali manj v pomoč. V vsakem primeru jih preberi, potem pa uporabi google, sodelavce ali Majo Z., da najdeš rešitev kako vzpostaviti želene povezave. 
+1. Izberi si dve časovni seriji iz dveh poljubnih (različnih) virov. Npr Si-Stat, Eurostat, obstoječ Excel ali csv ali pdf fajl na tvojem disku - najbolje nekaj, kar sicer pogosto uporabljaš. Odvisno od vira, ki si si ga izbral, ti bodo spodnja navodila bolj ali manj v pomoč. V vsakem primeru jih preberi, potem pa uporabi google, sodelavce ali Majo Z., da najdeš rešitev, kako vzpostaviti želene povezave. 
 
 2. Nadaljuj s točko 2. naprednih navodil.
-
-
-
-
-
-
-
 
 
 # Priprava poizvedbe na Si-Stat
@@ -107,19 +100,19 @@ knitr::include_graphics("images/img03.png")
 knitr::include_graphics("images/img04.png")
 ```
 
-3. V polje `URL` skopiraj url, ki si ga dobil v zadnji točki priprave poizvedbe in klikni `OK`.
+3. V polje `URL` skopiraj url, ki si ga dobil v zadnji točki priprave poizvedbe, in klikni `OK`.
 
 ```{r, echo=FALSE, out.width="60%"}
 knitr::include_graphics("images/img05.png")
 ```
 
-4. če je šlo vse po sreči, bi moral videti nekaj podobnega kot je na spodnji sliki. Najbolj pomembno je, da se v tem predogledu vidi več stolpcev. Glej troubleshooting poglavje, če ne gre povsem gladko. 
+4. če je šlo vse po sreči, bi moral videti nekaj podobnega, kot je na spodnji sliki. Najbolj pomembno je, da se v tem predogledu vidi več stolpcev. Glej troubleshooting poglavje, če ne gre povsem gladko. 
 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("images/img06.png")
 ```
 
-5. Zdaj sta na voljo dve možnosti, odvisno od tega kaj nameravaš delati s podatki: podatke lahko naložiš (*Load*) ali pa se lotiš nadaljnjih transformacij (*Transform*). Nobena odločitev pa ni dokončna - če podatke naložiš, jih še vedno lahko kasneje spreminjaš in seveda obratno. 
+5. Zdaj sta na voljo dve možnosti, odvisno od tega, kaj nameravaš delati s podatki: podatke lahko naložiš (*Load*) ali pa se lotiš nadaljnjih transformacij (*Transform*). Nobena odločitev pa ni dokončna - če podatke naložiš, jih še vedno lahko kasneje spreminjaš in seveda obratno. 
 
 # Nalaganje podatkov
 
@@ -138,11 +131,11 @@ knitr::include_graphics("images/img07.png")
 knitr::include_graphics("images/img08.png")
 ```
 
-Ne glede na to katero možnost si izbral, imaš zdaj v Excelu aktivno povezavo na izbrani vir podatkov. Ta vir lahko urejaš tako, da zavihku *Data* izbereš *Queries & Connections*, kar ti bo odprlo seznam odprtih povezav oziroma poizvedb na desni strani ekrana.  
+Ne glede na to, katero možnost si izbral, imaš zdaj v Excelu aktivno povezavo na izbrani vir podatkov. Ta vir lahko urejaš tako, da zavihku *Data* izbereš *Queries & Connections*, kar ti bo odprlo seznam odprtih povezav oziroma poizvedb na desni strani ekrana.  
 
 ## Osveževanje podatkov
 
-Povezava na podatke oz. poizvedba, ki si jo pripravil, se ne osvežuje avtomatično kadar pride do spremembe pri viru. 
+Povezava na podatke oz. poizvedba, ki si jo pripravil, se ne osvežuje avtomatično, kadar pride do spremembe pri viru. 
 
 Podatke lahko osvežiš na več načinov:
 
@@ -164,12 +157,12 @@ knitr::include_graphics("images/img10.png")
 
 5. Velja biti pozoren na opcijo *Enable background refresh*: to se zdi uporabno, ker pomeni, da med osveževanjem lahko uporabljaš Excel in delaš kaj drugega. Ampak pomeni pa tudi, da Excel ne čaka z drugimi stvarmi, medtem ko se v ozadju posodabljajo podatki, in v praksi to lahko pomeni, da recimo vrtilna tabela iz teh podatkov ne bo počakala, da se podatki najprej posodobijo - v tem primeru jo bo treba še enkrat osvežit. Samo omenim, če se komu to zgodi, da ve zakaj. 
 
-6. Poleg tega ni slaba ideja, da povezavo poimenuješ bolj opisno, kar tudi narediš v tem pogovornem okencu, na vrhu v polju *Query name* in po želji še *Description*. 
+6. Poleg tega ni slaba ideja, da povezavo poimenuješ bolj opisno, kar tudi narediš v tem pogovornem okencu na vrhu v polju *Query name* in po želji še *Description*. 
 
 
 # Transformacije podatkov
 
-Z izbiro opcije *Transform* preden podatke naložiš, se odpre t.i. "*Power Query Editor*". Ravno tako se odpre, če dvakrat klikneš na poizvedbo na desni strani ekrana. 
+Z izbiro opcije *Transform*, preden podatke naložiš, se odpre t.i. "*Power Query Editor*". Ravno tako se odpre, če dvakrat klikneš na poizvedbo na desni strani ekrana. 
 
 Power query editor je tako zelo powerful, da se tukaj niti približno ne moremo dotakniti velike večine funkcionalnosti - vedi le, da če si lahko zamisliš neko transformacijo, se jo verjetno da narediti. Zato vprašaj ali pogooglaj :)
 
@@ -205,7 +198,7 @@ Zavihek Home ali Trasnform, *Group By*
 - Izberi stolpec, po katerem želiš grupirati in klikni *Group By*
 - v pogovornem okencu, ki se odpre, določi katere agregacije želiš
 - če jih želiš več, klikni na *Advanced*
-- npr, če imaš mesečne podatke, jih lahko združiš po letu in glede na tip podatka izbereš vsote ali povprečja za vsak stolpec, ki te zanima. 
+- npr. če imaš mesečne podatke, jih lahko združiš po letu in glede na tip podatka izbereš vsote ali povprečja za vsak stolpec, ki te zanima. 
 
 
 ### Filtriranje vrstic
@@ -252,7 +245,7 @@ knitr::include_graphics("images/img12.png")
 ```
 
 
-Ko si zadovoljen s predogledom poizvedbe, pa izbereš `Close & Load` in, če še nisi, izbereš lokacijo, kamor želiš, da se ti tabela z rezultati poizvedbe naloži.
+Ko si zadovoljen s predogledom poizvedbe, pa izbereš `Close & Load` in če še nisi, izbereš lokacijo, kamor želiš, da se ti tabela z rezultati poizvedbe naloži.
 
 
 # Troubleshooting
@@ -315,7 +308,7 @@ S to rešitvijo je seveda potencialna težava, če imaš v enem fajlu povezave n
 
 Če boš na Si-Statu izbral spremenljivko, ki ima manjkajoče vrednosti, bodo te verjetno označene s tremi pikami (`...`) ali čem podobnim, česar Excel ne bo razpoznal kot manjkajočo vrednost. 
 
-V tem primeru bo stolpec uvozil kot tekst namesto kot številko, kar pa ti lahko povzroča težave kasneje, zato je to najbolje urediti že v Power Query-u. 
+V tem primeru bo tudi stolpec uvozil kot tekst namesto kot številko, kar ti lahko povzroča težave kasneje, zato je to najbolje urediti že v Power Query-u. 
 
 Najprej se na desnem seznamu korakov postavi na obstoječ korak *Change Type*. Nato se postavi na dotični stolpec in iz zgornjega menija ali iz menija po desnem kliku izberi možnost *Data Type* ali *Change data type* in izberi ustrezen tip - verjetno *Decimal number* ali pa *Whole number*. 
 
@@ -325,7 +318,7 @@ Power query te bo opozoril, da stolpec že ima spremembo tipa, in na to mu odgov
 knitr::include_graphics("images/img22.png")
 ```
 
-Po tej spremembi boš opazil naslednje: namesto `...` je zdaj v teh poljih *Error*, ker seveda tri pike niso pravilnega tipa. Zato je potreben naslednji korak: errorje je treba zamenjati na `null`. 
+Po tej spremembi boš opazil naslednje: namesto `...` je zdaj v teh poljih *Error*, ker seveda tri pike niso pravilnega tipa. Zato je potreben naslednji korak: errorje je treba zamenjati na `null` - to je pravilna oznaka za manjkajočp vrednost. 
 
 Klikni na mali trikotniček zraven gumba *Replace values* in izberi drugo možnost: *Replace errors*. V okencu, ki se ti odpre, v polje vpiši *null* in klikni OK. 
 
