@@ -223,6 +223,7 @@ Zavihek Home ali Trasnform, *Group By*
 - če jih želiš več, klikni na *Advanced*
 - npr. če imaš mesečne podatke, jih lahko združiš po letu in glede na tip podatka izbereš vsote ali povprečja za vsak stolpec, ki te zanima. 
 
+NB: agregiranje iz mesecev v leta ne bi smelo predstavljati težave. Oznako za mesece npr. 2022M04 je treba ločiti v letnico (column split) in potem ta stolpec uporabiti za združevanje. Agregiranje iz mesecev v četrtletja pa bo zahtevalo še dodaten korak: pripraviti moraš *šifrant*, torej tabelico, ki prikazuje kako se meseci rekodirajo v četrtletja (en stolpec gre od 1 do 12, drugi pa 111222333444. To tabelo moraš spremeniti v pravo Excel tabelo (*Insert table*) in potem narediti povezavo do nje: *Data/Get Data/From Table/Range*. Zdaj pa moraš to tabelo združiti s svojo glavno podatkovno tabelo po mesecu (glej razdelek \@ref(sec1). Tako dobiš pravilno označena četrtletja in zdaj lahko agregiraš podatke po njih.  
 
 ### Filtriranje vrstic 
 
