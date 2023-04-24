@@ -10,7 +10,7 @@ title: Uporaba Excel Power Query-a za združevanje podatkov iz Si-Stat
 Author |  Version        | Status   | Date
 :------:|:--------------:|:--------:|:-----------:
   mz    |0.1.0          | draft    |   2023-04-13
-  mz    |1.0.0          | draft    |   `r Sys.Date()`
+  mz    |1.0.0          | issued    |   `r Sys.Date()`
   
 *Da ne pozabiš vsega naučenega na tečaju napredne uporabe Excela, imaš tukaj osvežitveno domačo nalogo, ki vključuje tudi precej navodil in poglavje Troubleshooting.*
 
@@ -31,7 +31,7 @@ Prvi trije, ki končate nalogo, dobite nagrado :)
 
 1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z enakim časovnim intervalom (recimo obe četrtletni). (Zaradi točke 4. premisli, kateri spremenljivki izbereš.)
 
-2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. (Skoraj 100% boš imel podatke z decimalkami, zato ne nujno preberi razdelek \@ref(dec) o manjkajočih decimalnih vejicah!)
+2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. (Skoraj 100% boš imel podatke z decimalkami, zato nujno preberi razdelek \@ref(dec) o manjkajočih decimalnih vejicah!)
 
 3. Ko imaš vzpostavljeni obe povezavi (ni treba naložiti podatkov, dovolj je vzpostaviti "connection only" povezavo), združi obe tabeli glede na časovno dimenzijo. (Glej razdelek \@ref(sec1) *Združevanje tabel*.) To bo seveda delovalo samo, če imata obe seriji enake časovne intervale. Če ne, si v napredni verziji naloge in kar pogumno nadaljuj tam!
 
@@ -45,7 +45,7 @@ Prvi trije, ki končate nalogo, dobite nagrado :)
 
 1. Izberi si dve časovni seriji iz dveh različnih tabel na Si-Stat-u z *različnim* časovnim intervalom (recimo ena mesečna in ena letna).  (Zaradi točke 5. premisli, kateri spremenljivki izbereš.)
 
-2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. (Skoraj 100% boš imel podatke z decimalkami, zato ne nujno preberi razdelek \@ref(dec) o manjkajočih decimalnih vejicah!)
+2. Odpri nov Excel fajl in s pomočjo spodnjih navodil vzpostavi podatkovni povezavi z obema viroma podatkov. (Skoraj 100% boš imel podatke z decimalkami, zato nujno preberi razdelek \@ref(dec) o manjkajočih decimalnih vejicah!)
 
 3. Tisto serijo, ki ima bolj podrobne podatke, agregiraj na raven druge serije (npr. mesečne podatke agregiraj na letne). Seveda pazi, da izbereš ustrezno funkcijo glede na tip podatka. (Glej razdelek \@ref(sec2) *Agregiranje*.)
 
@@ -92,7 +92,7 @@ knitr::include_graphics("images/img03.png")
 
 # Priprava povezave v Excel Power Query-u. 
 
-1. Odpri nov svež prazen Excel fajl. 
+1. Odpri nov, svež Excel fajl. 
 
 2. Na zavihku `Data` izberi `From Web` 
 
@@ -106,13 +106,13 @@ knitr::include_graphics("images/img04.png")
 knitr::include_graphics("images/img05.png")
 ```
 
-4. če je šlo vse po sreči, bi moral videti nekaj podobnega, kot je na spodnji sliki. Najbolj pomembno je, da se v tem predogledu vidi več stolpcev. Glej troubleshooting poglavje, če ne gre povsem gladko. 
+4. če je šlo vse po sreči, bi moral videti nekaj podobnega, kot je na spodnji sliki. Najbolj pomembno je, da se v tem predogledu vidi več stolpcev. Glej troubleshooting poglavje \@ref(misterij), če ne gre povsem gladko. 
 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("images/img06.png")
 ```
 
-5. Zdaj sta na voljo dve možnosti, odvisno od tega, kaj nameravaš delati s podatki: podatke lahko naložiš (*Load*) ali pa se lotiš nadaljnjih transformacij (*Transform*). Nobena odločitev pa ni dokončna - če podatke naložiš, jih še vedno lahko kasneje spreminjaš in seveda obratno. 
+5. Zdaj sta na voljo dve možnosti, odvisno od tega, kaj nameravaš delati s podatki: podatke lahko naložiš (*Load*) ali pa se pred tem lotiš nadaljnjih transformacij (*Transform*). Nobena odločitev pa ni dokončna - če podatke naložiš, jih še vedno lahko kasneje spreminjaš in seveda obratno. 
 
 # Nalaganje podatkov
 
@@ -123,7 +123,7 @@ knitr::include_graphics("images/img07.png")
 
 1. *Load*: default nalaganje naloži tabelo v nov zavihek. 
 
-2. *Load to*: ti da več možnosti, kjer lahko recimo določiš lokacijo tabele. 
+2. *Load to*: ti da več možnosti, kjer lahko recimo določiš specifično lokacijo tabele. 
 
 3. *Load to*: in izbira *Only create connection* je tudi zelo uporabna možnost, kadar ne rabimo tabele neposredno, ampak jo bomo uporabili kasneje, kot input za novo poizvedbo. 
 
@@ -146,16 +146,16 @@ knitr::include_graphics("images/img09.png")
 
 2. Z ikonico *Refresh all* na vrhu zavihka *Data*, ki osveži vse poizvedbe. 
 
-3. Lahko pa si nastaviš lastnosti vsake povezave, kjer določiš kdaj se poizvedba samodejno posodobi. Do tega okenca prideš tako da z desno klikneš na poizvedbo v seznamu na desni strani ekrana in izbereš možnost *Properties* na dnu. 
+3. Lahko pa si nastaviš lastnosti vsake povezave, kjer določiš, kdaj se poizvedba samodejno posodobi. Do tega okenca prideš tako, da z desno klikneš na poizvedbo v seznamu na desni strani ekrana in izbereš možnost *Properties* na dnu. 
 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("images/img10.png")
 ```
 
 
-4. Najbolj uporabna kljukica tukaj je *Refresh data when opening file the file*, ki naredi to, kar piše ;)
+4. Najbolj uporabna kljukica tukaj je *Refresh data when opening the file*, ki naredi to, kar piše ;)
 
-5. Velja biti pozoren na opcijo *Enable background refresh*: to se zdi uporabno, ker pomeni, da med osveževanjem lahko uporabljaš Excel in delaš kaj drugega. Ampak pomeni pa tudi, da Excel ne čaka z drugimi stvarmi, medtem ko se v ozadju posodabljajo podatki, in v praksi to lahko pomeni, da recimo vrtilna tabela iz teh podatkov ne bo počakala, da se podatki najprej posodobijo - v tem primeru jo bo treba še enkrat osvežit. Samo omenim, če se komu to zgodi, da ve zakaj. 
+5. Velja biti pozoren na opcijo *Enable background refresh*: to se zdi uporabno, ker pomeni, da med osveževanjem lahko uporabljaš Excel in delaš kaj drugega. Ampak pomeni pa tudi, da Excel ne čaka z drugimi stvarmi, medtem ko se v ozadju posodabljajo podatki, in v praksi to lahko pomeni, da recimo vrtilna tabela iz teh podatkov ne bo počakala, da se podatki najprej posodobijo - v tem primeru jo bo treba še enkrat osvežit. Samo omenim, če se komu to zgodi, da ve, zakaj. 
 
 6. Poleg tega ni slaba ideja, da povezavo poimenuješ bolj opisno, kar tudi narediš v tem pogovornem okencu na vrhu v polju *Query name* in po želji še *Description*. 
 
@@ -187,7 +187,7 @@ Se lahko uporablja kadar želiš zamenjati celotno vsebino celice:
 
 - izberi stolpec, ki ga želiš popraviti in klikni na *Replace values* in vnesi vrednsti v polji *Value to find* in  *Replace with*, npr. "Podatki z izločenim vplivom sezone" in  "Desezonirani podatki". 
 
-Lahko pa to transformacijo uporabiš tudi, kadar želiš spremeniti ali odstraniti samo del besedila, npr. če želiš iz "Skupaj dejavnosti" spremeniti v "Skupaj", potem lahko v okence *Value to find* vneseš "dejavnosti" in *Replace with* pustiš prazno. 
+Lahko pa to transformacijo uporabiš tudi, kadar želiš spremeniti ali odstraniti samo del besedila, npr. če želiš "Skupaj dejavnosti" spremeniti v "Skupaj", potem lahko v okence *Value to find* vneseš "dejavnosti" in *Replace with* pustiš prazno. 
 
 Ta transformacija bi lahko bila tudi uporabna, če se želiš znebiti tistih pik, ki jih SURS uporablja za prikaz hierarhičnosti kategorij. Vendar je potrebno to narediti za vsa možna števila pik, zato je morda lažja rešitev v naslednjem razdelku.
 
@@ -200,7 +200,7 @@ Zavihek *Add column*, gumb *Custom Column*.
 
 V okencu *Custom column formula* poleg enostavnih operacij med stolpci lahko uporabiš **ogromno število** *Power query funkcij*, ki jih ne bom tukaj obravnavala. Ampak samo za primer, kako bi se znebili tistih pik omenjenih zgoraj. 
 
-- klikni na gumb *Custom Column* in izberi ime novega stolpca in v okence vnesi funkcijo `Text.Remove`, tako kot je prikazano na sliki spodaj. 
+- klikni na gumb *Custom Column* in izberi ime novega stolpca in v okence vnesi funkcijo `Text.Remove`, tako kot je prikazano na sliki spodaj. Funkcija bo iz polj zbrisala to, kar vnesemo v oklepaj na drugem mestu, v tem primeru torej piko. 
 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("images/img25.png")
@@ -218,12 +218,12 @@ Zavihek Transform, *Rename*
 
 Zavihek Home ali Trasnform, *Group By*
 
-- Izberi stolpec, po katerem želiš grupirati in klikni *Group By*
-- v pogovornem okencu, ki se odpre, določi katere agregacije želiš
+- Izberi stolpec, po katerem želiš grupirati, in klikni *Group By*
+- v pogovornem okencu, ki se odpre, določi, katere agregacije želiš
 - če jih želiš več, klikni na *Advanced*
 - npr. če imaš mesečne podatke, jih lahko združiš po letu in glede na tip podatka izbereš vsote ali povprečja za vsak stolpec, ki te zanima. 
 
-NB: agregiranje iz mesecev v leta ne bi smelo predstavljati težave. Oznako za mesece npr. 2022M04 je treba ločiti v letnico (column split) in potem ta stolpec uporabiti za združevanje. Agregiranje iz mesecev v četrtletja pa bo zahtevalo še dodaten korak: pripraviti moraš *šifrant*, torej tabelico, ki prikazuje kako se meseci rekodirajo v četrtletja (en stolpec gre od 1 do 12, drugi pa 111222333444. To tabelo moraš spremeniti v pravo Excel tabelo (*Insert table*) in potem narediti povezavo do nje: *Data/Get Data/From Table/Range*. Zdaj pa moraš to tabelo združiti s svojo glavno podatkovno tabelo po mesecu (glej razdelek \@ref(sec1). Tako dobiš pravilno označena četrtletja in zdaj lahko agregiraš podatke po njih.  
+NB: agregiranje iz mesecev v leta ne bi smelo predstavljati težave. Oznako za mesece npr. 2022M04 je treba ločiti v letnico (column split) in potem ta stolpec uporabiti za združevanje. Agregiranje iz mesecev v četrtletja pa bo zahtevalo še dodaten korak: pripraviti moraš *šifrant*, torej tabelico, ki prikazuje, kako se meseci rekodirajo v četrtletja (en stolpec gre od 1 do 12, drugi pa 111222333444. To tabelo moraš spremeniti v pravo Excel tabelo (*Insert table*) in potem narediti povezavo do nje: *Data/Get Data/From Table/Range*. Zdaj pa moraš to tabelo združiti s svojo glavno podatkovno tabelo po mesecu (glej razdelek \@ref(sec1). Tako dobiš pravilno označena četrtletja in zdaj lahko agregiraš podatke po njih.  
 
 ### Filtriranje vrstic 
 
@@ -239,7 +239,7 @@ Združevanja se lotiš tako, da odpreš Power Query Editor v eni od obeh tabel.
 
 Možnih je več tipov združevanj - levo, desno, notranje ipd. najbolje, da malo eksperimentiraš. 
 
-Ko potrdiš merge, se bo v tabeli pojavil not stolpec z ikonico z dvema puščicama. Na to ikonico klikneš in izbereš katere stolpce iz druge tabele želiš prikazane (če ne želiš vseh). 
+Ko potrdiš merge, se bo v tabeli pojavil not stolpec z ikonico z dvema puščicama. Na to ikonico klikneš in izbereš katere stolpce iz druge tabele želiš prikazane (če ne želiš vseh) - šele potem se ti prikaže združena tabela.  
 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("images/img13.png")
@@ -261,7 +261,7 @@ Tukaj lahko:
 knitr::include_graphics("images/img11.png")
 ```
 
-Prvi trije koraki: Source, Promoted Headers in Changed type se avtomatično pripravijo ob pripravi povezave. Te tri korake res predlagam, da pustiš pri miru, razen če veš, kaj delaš (*cf.* Troubleshooting). Ostale korake praviloma dodajaš po vrsti, dokler nisi zadovoljen s predogledom, ki ga vidiš v editorju. 
+Prvi trije koraki: *Source*, *Promoted Headers* in *Changed Type* se avtomatično pripravijo ob pripravi povezave. Te tri korake res predlagam, da pustiš pri miru, razen če veš, kaj delaš (*cf.* Troubleshooting). Ostale korake praviloma dodajaš po vrsti, dokler nisi zadovoljen s predogledom, ki ga vidiš v editorju. 
 
 Vrstni red korakov je pomemben! Recimo če najprej razdeliš stolpec s četrtletji na leto in četrtletje in potem grupiraš podatke glede na leto, ne moreš tega narediti v obratnem vrstnem redu. Zato se ne ustrašiti, če se ti pojavi spodnje opozorilo: Excel samo preverja, da res želiš nov korak vriniti med že obstoječe - ker ponavadi hočeš dodati korak na koncu. 
 
@@ -270,14 +270,14 @@ knitr::include_graphics("images/img12.png")
 ```
 
 
-Ko si zadovoljen s predogledom poizvedbe, pa izbereš `Close & Load` in če še nisi, izbereš lokacijo, kamor želiš, da se ti tabela z rezultati poizvedbe naloži.
+Ko si zadovoljen s predogledom poizvedbe, pa izbereš `Close & Load` in, če še nisi, izbereš lokacijo, kamor želiš, da se ti tabela z rezultati poizvedbe naloži.
 
 
 # Troubleshooting
 
-## Troubleshooting manjkajočih stolpcev
+## Troubleshooting manjkajočih stolpcev {#misterij}
 
-Včasih se - iz meni misterijoznih razlogov - zgodi, da pri uvozu podatkov Excel noče pravilno razumeti stolpcev oz. delimiterjev. Težko reproduciram to situacijo, ampak po mojih izkušnjah se manj pogosto zgodi, če:
+Včasih se - iz meni misterijoznih razlogov - zgodi, da pri uvozu podatkov Excel noče pravilno razumeti stolpcev oz. delimiterjev. Težko reproduciram to situacijo, ampak po mojih izkušnjah se *manj pogosto* zgodi, če:
 
 * startaš z novim, svežim Excel fajlom,
 * Si-stat poizvedbo izvoziš brez glave (glava tukaj ne pomeni headerja, torej vrstice z imeni stolpcev, ampak tekst nad tem, ki ni del prave tabele),
@@ -310,7 +310,7 @@ Težava je torej, da ima power query navodilo, da uvozi samo en stolpec. Zdaj pa
 
 Če boš na Si-Statu izbral sprejemljivko, ki ima decimalke, se bo zgodilo naslednje: Si-Stat pri izvozu uporablja angleški sistem oznak, torej decimalno piko in ne vejice, toda tvoj Excel je nastavljen na slovenske regionalne nastavitve in zato decimalne pike ne razume. 
 
-Če imaš v podatkih decimalke, potem ti ne bo všeč, kaj se je zgodilo v koraku *Change type*, ker je namreč ta korak verjetno narobe določil tip spremenjlivke. Namesto decimalne številke je določil tip števke (integer -- `Int64.Type`) in tako je `80.0` namesto `80,0`, postala `800`. 
+Če imaš v podatkih decimalke, potem ti ne bo všeč, kaj se je zgodilo v koraku *Change type*, ker je namreč ta korak verjetno narobe določil tip spremenjlivke. Namesto decimalne številke je določil tip *števke* (integer -- `Int64.Type`) in tako je `80.0` namesto `80,0`, postala `800`. 
 
 ```{r, echo=FALSE, out.width="100%"} 
  
@@ -326,7 +326,7 @@ knitr::include_graphics("images/img21.png")
 
 Potem moraš najverjetneje ponoviti uvoz, da 'zagrabi'. 
 
-S to rešitvijo je seveda potencialna težava, če imaš v enem fajlu povezave na vire, ki uporabljajo različne sisteme: enega z decimalnimi vejicami in enega z decimalnimi pikami. Potem se je treba zadeve lotiti drugače, tako da popraviš samo poizvedbo v koraku *Change type*, ampak računam, da je to tako redko, da ne bom še tega malce bolj zakompliciranega postopka tukaj razlagala, seveda pa me lahko vedno pridete vprašati. 
+S to rešitvijo je seveda potencialna težava, če imaš v enem fajlu povezave na vire, ki uporabljajo različne sisteme: enega z decimalnimi vejicami in enega z decimalnimi pikami. Potem se je treba zadeve lotiti drugače, tako da popraviš poizvedbo samo v koraku *Change type*, ampak računam, da je to tako redko, da ne bom še tega malce bolj zakompliciranega postopka tukaj razlagala, seveda pa me lahko vedno pridete vprašati. 
 
 
 ## Troubleshooting neobičajnih manjkajočih vrednosti
